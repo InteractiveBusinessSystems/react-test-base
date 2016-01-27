@@ -4,23 +4,24 @@ var Template = require('./template.js');
 
 var Counter = require('./counter.js');
 
-var NotFound = React.createClass({
-    render: function () {
-        return (
-            <h1>Not Found!</h1>
-        )
-    }
-});
+var NotFound = () => (
+    <h1>Not Found!</h1>
+);
+
+var About = () => (
+    <h1>About!</h1>
+);
 
 var App = React.createClass({
     render: function () {
         return (
-            <Template>
                 <Router history={hashHistory}>
-                    <Route path="/" component={Counter} />
-                    <Route path="*" component={NotFound} />
+                    <Route component={Template}>
+                        <Route path="/" name="Counter" component={Counter} />
+                        <Route path="/c2" name="About" component={About} />
+                        <Route path="*" component={NotFound} />
+                    </Route>
                 </Router>
-            </Template>
         )
     }
 });

@@ -11,7 +11,7 @@ var Counter = React.createClass({
     getInitialState: function () {
         return {
             val: 1,
-            val2: 'test'
+            test: 'test'
         }
     },
     handleChange: function (event) {
