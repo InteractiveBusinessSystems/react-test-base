@@ -1,7 +1,5 @@
 var React = require('react');
-var Router = require('react-router').Router;
-var Route = require('react-router').Route;
-var History = require('react-router').hashHistory;
+import {Router, Route, hashHistory} from 'react-router';
 var Template = require('./template.js');
 
 var Counter = require('./counter.js');
@@ -18,7 +16,7 @@ var App = React.createClass({
     render: function () {
         return (
             <Template>
-                <Router history={History}>
+                <Router history={hashHistory}>
                     <Route path="/" component={Counter} />
                     <Route path="*" component={NotFound} />
                 </Router>
