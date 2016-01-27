@@ -1,7 +1,7 @@
 var React = require('react');
-var connect = require('react-redux').connect;
+import { connect } from 'react-redux';
 var AppStore = require('../stores/app-store.js');
-var AppActions = require('../actions/app-actions.js');
+import * as AppActions from '../actions/app-actions.js'
 
 function getState() {
     return AppStore.getState();
@@ -10,11 +10,14 @@ function getState() {
 var Counter = React.createClass({
     getInitialState: function () {
         return {
-            val: 1
+            val: 1,
+            val2: 'test'
         }
     },
     handleChange: function (event) {
-        this.setState({val: event.target.value});
+        this.setState({
+            val: event.target.value
+        });
     },
     getNum: function () {
         var num = this.state.val;

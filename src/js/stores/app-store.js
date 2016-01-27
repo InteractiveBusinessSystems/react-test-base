@@ -1,4 +1,4 @@
-var createStore = require('redux').createStore;
+import {createStore} from 'redux'
 
 function counter(state, action) {
     switch (action.type) {
