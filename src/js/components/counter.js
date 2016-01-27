@@ -8,11 +8,24 @@ function getState() {
 }
 
 var Counter = React.createClass({
+    getInitialState: function () {
+        return {
+            val: 1
+        }
+    },
+    handleChange: function (event) {
+        this.setState({val: event.target.value});
+    },
+    getNum: function () {
+        var num = this.state.val;
+        num = num === "" ? 1 : num;
+        return parseInt(num);
+    },
     increase: function () {
-        this.props.increase();
+        this.props.increase(this.getNum());
     },
     decrease: function () {
-        AppStore.dispatch(AppActions.decrease());
+        AppStore.dispatch(AppActions.decrease(this.getNum()));
     },
 
     render: function () {
@@ -21,7 +34,7 @@ var Counter = React.createClass({
                 <h1>Test {this.props.count}</h1>
                 <button onClick={this.increase}>Inc</button>
                 <button onClick={this.decrease}>Dec</button>
-                <input type="number" ref="num"/>
+                <input type="number" value={this.state.val} onChange={this.handleChange}/>
             </div>
         )
     }

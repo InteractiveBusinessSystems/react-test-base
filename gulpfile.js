@@ -1,7 +1,5 @@
 var gulp = require('gulp'),
     browserify = require('browserify'),
-    reactify = require('reactify'),
-    babelify = require('babelify'),
     source = require('vinyl-source-stream');
 
 gulp.task('browserify', function () {

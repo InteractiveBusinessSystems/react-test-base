@@ -1,11 +1,17 @@
 var AppStore = require('../stores/app-store.js');
 
 var AppActions = {
-    increase: function () {
-        return {type: 'INCREMENT'};
+    increase: function (num) {
+        return {
+            amt: num,
+            type: 'INCREMENT'
+        };
     },
-    decrease: function () {
-        return {type: 'DECREMENT'};
+    decrease: function (num) {
+        return {
+            amt: num,
+            type: 'DECREMENT'
+        };
     }
 };
 

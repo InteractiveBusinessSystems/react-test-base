@@ -3,9 +3,13 @@ var createStore = require('redux').createStore;
 function counter(state, action) {
     switch (action.type) {
         case 'INCREMENT':
-            return Object.assign({}, state, {count: state.count + 1});
+            return Object.assign({}, state, {
+                count: state.count + action.amt
+            });
         case 'DECREMENT':
-            return Object.assign({}, state, {count: state.count - 1});
+            return Object.assign({}, state, {
+                count: state.count - action.amt
+            });
         default:
             return state
     }
