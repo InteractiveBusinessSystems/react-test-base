@@ -11,9 +11,10 @@ var Template = React.createClass({
                     <Link to={x.path}>{x.name}</Link>
                 </li>
             ));
+
         return (
             <div className="container">
-                <ul>
+                <ul className="nav">
                     {routes}
                 </ul>
                 {this.props.children}

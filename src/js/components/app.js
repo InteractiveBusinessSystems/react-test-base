@@ -1,5 +1,5 @@
 var React = require('react');
-import {Router, Route, hashHistory} from 'react-router';
+import { Router, Route } from 'react-router';
 var Template = require('./template.js');
 
 var Counter = require('./counter.js');
@@ -9,19 +9,21 @@ var NotFound = () => (
 );
 
 var About = () => (
-    <h1>About!</h1>
+    <div>
+        <h1>About!</h1>
+    </div>
 );
 
 var App = React.createClass({
     render: function () {
         return (
-                <Router history={hashHistory}>
-                    <Route component={Template}>
-                        <Route path="/" name="Counter" component={Counter} />
-                        <Route path="/c2" name="About" component={About} />
-                        <Route path="*" component={NotFound} />
-                    </Route>
-                </Router>
+            <Router>
+                <Route component={Template}>
+                    <Route path="/" name="Counter" component={Counter}/>
+                    <Route path="/about" name="About" component={About}/>
+                    <Route path="*" component={NotFound}/>
+                </Route>
+            </Router>
         )
     }
 });

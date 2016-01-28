@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     browserify = require('browserify'),
-    source = require('vinyl-source-stream');
+    source = require('vinyl-source-stream'),
+    connect = require('gulp-connect');
 
 gulp.task('browserify', function () {
     browserify('./src/js/main.js')
@@ -10,7 +11,7 @@ gulp.task('browserify', function () {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('copy', function () {
+gulp.task('copy', ['browserify'], function () {
     gulp.src('src/index.html')
         .pipe(gulp.dest('dist'));
 
@@ -18,6 +19,11 @@ gulp.task('copy', function () {
         .pipe(gulp.dest('dist/assets'));
 });
 
-gulp.task('default', ['browserify', 'copy'], function () {
-    return gulp.watch('./src/**/*.*', ['browserify', 'copy'])
+gulp.task('serve', ['copy'], function() {
+    gulp.watch('./src/**/*.*', ['copy']);
+    connect.server({
+        root: 'dist'
+    });
 });
+
+gulp.task('default', ['copy']);
