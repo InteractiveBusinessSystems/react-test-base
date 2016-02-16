@@ -14,6 +14,12 @@ var About = () => (
     </div>
 );
 
+var UserRoutes = () => (
+    <Route>
+        <Route />
+    </Route>
+);
+
 var App = React.createClass({
     render: function () {
         return (
@@ -21,7 +27,10 @@ var App = React.createClass({
                 <Route component={Template}>
                     <Route path="/" name="Counter" component={Counter}/>
                     <Route path="/about" name="About" component={About}/>
-                    <Route path="*" component={NotFound}/>
+                    <Route path="*" component={NotFound}>
+                        {UserRoutes}
+                    </Route>
+
                 </Route>
             </Router>
         )

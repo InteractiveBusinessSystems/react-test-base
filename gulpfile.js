@@ -22,7 +22,8 @@ gulp.task('copy', ['browserify'], function () {
 gulp.task('serve', ['copy'], function() {
     gulp.watch('./src/**/*.*', ['copy']);
     connect.server({
-        root: 'dist'
+        root: 'dist',
+        port: 3003
     });
 });
 
